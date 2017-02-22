@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="gb2312">
+<title>title</title>
+<script>
+
+if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+	if(parseFloat(RegExp.$1)>2.3){
+		var phoneScale = parseInt(window.screen.width)/640;
+		document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+	}else{
+		document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+	}
+}else{
+	document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+}
+
+</script>
+<style type="text/css">
+/* Reset & Global */
+html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+html, body {  -webkit-tap-highlight-color:rgba(0,0,0,0); }
+body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+ul, ol, li { list-style-type: none; }
+img{vertical-align: top;}
+em, i { font-style: normal; }
+input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-appearance:none;}
+a, a:visited { color: #000; }
+a { text-decoration: none; }
+a img { border: 0 none; }
+.clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+input:focus::-webkit-input-placeholder { color: rgba(0,0,0,0); }
+input::-webkit-input-placeholder { color: #999; }
+input:focus::-moz-placeholder { color: rgba(0,0,0,0); }
+input::-moz-placeholder { color: #999; }
+input:focus:-ms-input-placeholder { color: rgba(0,0,0,0); }
+input:-ms-input-placeholder { color: #999; }
+
+/* con */
+.wrapper {width:640px; margin:0 auto; position: relative; overflow: hidden;}
+
+
+.rotate-box1{ width: 540px; height: 532px; position: relative; }
+.rotate-box1 .start{position: absolute;left: 200px;top: 139px; width: 139px; height: 198px; background: url(http://2.zol-img.com.cn/zt/tm_579/581e761a46/start.png) no-repeat; z-index: 3;}
+.rotate-box1 .turncate{width: 540px; height: 532px; background: url(http://2.zol-img.com.cn/zt/tm_57a/83fb72b34b/turncate.png)no-repeat;}
+
+
+.rotate-box2{  width: 500px; height: 500px;position: relative;  }
+.rotate-box2 .turncate { width: 500px; height: 500px; background: url(http://2.zol-img.com.cn/zt/tm_584/55334dcc3f/rotate.png) no-repeat; }
+.rotate-box2 .turncate { width: 500px; height: 500px; background: url(http://2.zol-img.com.cn/zt/tm_576/8ed3e1d9a5/rotate.png) no-repeat; }
+.rotate-box2 .start {position: absolute;  left: 174px; top: 149px; width: 150px; height: 175px;  background: url(http://2.zol-img.com.cn/zt/tm_575/fc6d88c17a/pointer1.png) no-repeat; z-index:3;}
+
+</style> 
+</head>
+<body>
+
+
+<div class="wrapper">
+	
+		<div class="rotate-box1">
+			<span class="start"></span>
+			<div class="turncate"></div>
+		</div>
+
+		<div class="rotate-box2">
+			<span class="start"></span>
+			<div class="turncate"></div>
+		</div>
+	
+</div> 
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js" ></script>
+
+<script src="rotatelottery.1.1.js"></script>
+<script type="text/javascript">
+
+
+
+
+var mylottery1 = new Lottery({
+	angel:23,
+	turncate: document.querySelector('.rotate-box1 .turncate')
+});
+	
+document.querySelector('.rotate-box1 .start').addEventListener('tap',function(){
+	var index = 4; //此处一般是ajax返回你需要的中奖index
+	mylottery1.rotateFn(index);
+	mylottery1.rotateOver=function(){
+		alert('恭喜你中了'+index+'等奖')
+	}
+})
+
+
+
+
+var mylottery2 = new Lottery({
+	areaNumber: 12, //12个扇区
+	rotateType: 'random', //扇区内随机
+	turncate: document.querySelector('.rotate-box2 .turncate')
+});
+	
+document.querySelector('.rotate-box2 .start').addEventListener('tap',function(){
+	var index = 4; 
+	mylottery2.rotateFn(index);
+	mylottery2.rotateOver=function(){
+		alert('恭喜你中了'+index+'等奖');
+	}
+})
+
+
+</script>
+
+
+</body>
+</html>
