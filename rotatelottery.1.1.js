@@ -1,6 +1,6 @@
 /* 
-ÒÆ¶¯¶Ë×ªÅÌ³é½±²å¼ş 
-var mylottery = new Lottery({}) //µ÷ÓÃ
+ç§»åŠ¨ç«¯è½¬ç›˜æŠ½å¥–æ’ä»¶ 
+var mylottery = new Lottery({}) //è°ƒç”¨
  */  
 
 (function(w){
@@ -23,31 +23,31 @@ var mylottery = new Lottery({}) //µ÷ÓÃ
 			turncate.style[$.CSSTransform] = 'rotate('+opt.angel+'deg)'; 
 		
 		},
-        rotateFn : function(index){  //×ªÅÌĞı×ª  indexÎªÖĞ½±ÇøÏÂ±ê
+        rotateFn : function(index){  //è½¬ç›˜æ—‹è½¬  indexä¸ºä¸­å¥–åŒºä¸‹æ ‡
         	var _this = this,
         		opt = _this.opt,
 			    turncate = opt.turncate,
 			    rotateType = opt.rotateType,
 			    angel = null,
 			    endAngle = null,
-			   	singleAngle = 360 /opt.areaNumber, //µ¥¸ö½±Çø½Ç¶ÈÖµ
+			   	singleAngle = 360 /opt.areaNumber, //å•ä¸ªå¥–åŒºè§’åº¦å€¼
 			   	disAngel =  opt.angel;
 
 			if(rotateType == 'random'){
-				endAngle = Math.random() * singleAngle;  //Ëæ»úµÃ³ö½á¹ûÔÚÉÈÇøÄÚµÄ½Ç¶È
+				endAngle = Math.random() * singleAngle;  //éšæœºå¾—å‡ºç»“æœåœ¨æ‰‡åŒºå†…çš„è§’åº¦
 				endAngle = Math.max(opt.deviation, endAngle);
 		        endAngle = Math.min(singleAngle - opt.deviation, endAngle);
-		        //endAngle = Math.ceil(endAngle + ((index-1) * singleAngle)); //Éè¼Æ¸å±ß½çÏßÕıÖĞ¼ä
+		        //endAngle = Math.ceil(endAngle + ((index-1) * singleAngle)); //è®¾è®¡ç¨¿è¾¹ç•Œçº¿æ­£ä¸­é—´
 		        endAngle = Math.ceil(endAngle + ((index-2) * singleAngle))+disAngel;
 			}else{
-				//endAngle = index * singleAngle - singleAngle/2; //Éè¼Æ¸å±ß½çÏßÕıÖĞ¼ä
-				endAngle = (index-1) * singleAngle+disAngel; //Éè¼Æ¸åÄ¬ÈÏÉÈÇøÕıÖĞ¼ä
+				//endAngle = index * singleAngle - singleAngle/2; //è®¾è®¡ç¨¿è¾¹ç•Œçº¿æ­£ä¸­é—´
+				endAngle = (index-1) * singleAngle+disAngel; //è®¾è®¡ç¨¿é»˜è®¤æ‰‡åŒºæ­£ä¸­é—´
 			}
 			
 			if (opt.flag_click) return;
-			_this.flag_click = true;  //×ªÅÌ×ª¶¯¹ı³ÌÖĞ²»¿ÉÔÙ´Î´¥·¢
+			_this.flag_click = true;  //è½¬ç›˜è½¬åŠ¨è¿‡ç¨‹ä¸­ä¸å¯å†æ¬¡è§¦å‘
 
-			turncate.style[$.transition] =' transform '+opt.duration+'ms ease-out';
+			turncate.style[$.transition] = $.CSSTransform + ' '+opt.duration+'ms ease-out';
 			turncate.style[$.CSSTransform] = 'rotate('+(opt.round+endAngle)+'deg)';
 		
 			setTimeout(function () {
@@ -73,13 +73,13 @@ var mylottery = new Lottery({}) //µ÷ÓÃ
 	}
 
 	Lottery.prototype.options = {
-		duration : 3000,  //Ö¸Õë×ª¶¯µÄÊ±¼ä ms  
-        round : 1440,  //È¦Êı 360* n  
-        rotateType: null,//  rotateType´ú±íĞı×ªĞÎÊ½(random ÉÈÇøÄÚËæ»ú ,Ä¬ÈÏÎªcenter´ú±íÉÈĞÎÖĞĞÄ) 
-        angel : 0,   //Ö¸Õë³õÊ¼Î»ÖÃ 
-        areaNumber : 8,  //½±ÇøÊıÁ¿
-        deviation: 2 ,//Ëæ»ú½á¹û½Ç¶ÈÆ«²îÖµ ÎªÁË·ÀÖ¹³öÏÖÖ¸ÕëºÍÉÈÇø·Ö¸îÏßÎŞÏŞÖØºÏ µ¥Î»:¡ã
-        turncate :document.querySelector('.turncate') //×ªÅÌ
+		duration : 3000,  //æŒ‡é’ˆè½¬åŠ¨çš„æ—¶é—´ ms  
+        round : 1440,  //åœˆæ•° 360* n  
+        rotateType: null,//  rotateTypeä»£è¡¨æ—‹è½¬å½¢å¼(random æ‰‡åŒºå†…éšæœº ,é»˜è®¤ä¸ºcenterä»£è¡¨æ‰‡å½¢ä¸­å¿ƒ) 
+        angel : 0,   //æŒ‡é’ˆåˆå§‹ä½ç½® 
+        areaNumber : 8,  //å¥–åŒºæ•°é‡
+        deviation: 2 ,//éšæœºç»“æœè§’åº¦åå·®å€¼ ä¸ºäº†é˜²æ­¢å‡ºç°æŒ‡é’ˆå’Œæ‰‡åŒºåˆ†å‰²çº¿æ— é™é‡åˆ å•ä½:Â°
+        turncate :document.querySelector('.turncate') //è½¬ç›˜
     }
 	w.Lottery = Lottery;
 })(window);
